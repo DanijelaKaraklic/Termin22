@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import rs.aleph.android.example22.tools.ReviewerTools;
+
 /**
  * Created by milossimic on 10/22/16.
  * AsyncTask klasa prima tri parametra prilikom specijalizacije
@@ -18,7 +20,7 @@ import android.widget.Toast;
  * Treci parametar je povratna vrednost, tj sta ce metoda doInBackground
  * vratiti kao poratnu vrednost metodi onPostExecute
  */
-public class SimpleSyncTask extends AsyncTask<Void, Void, Void>{
+public class SimpleSyncTask extends AsyncTask<Integer, Void, Void>{
 
     private Context context;
 
@@ -39,7 +41,10 @@ public class SimpleSyncTask extends AsyncTask<Void, Void, Void>{
      * Sav posao koji dugo traje izvrsavati unutar ove metode.
      */
     @Override
-    protected Void doInBackground(Void... params) {
+    protected Void doInBackground(Integer status) {
+
+
+        ReviewerTools.getConnectivityStatus(getApplicationContext());
         try {
             //simulacija posla koji se obavlja u pozadini i traje duze vreme
             Thread.sleep(6000);
